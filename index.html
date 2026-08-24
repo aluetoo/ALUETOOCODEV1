@@ -350,11 +350,11 @@ async function generate(promptText, isRegen=false){
   try{
     let html = '';
     try{
-      html = await callGroq(prompt, 'llama-3.3-70b-versatile');
+      html = await callGroq(prompt, 'openai/gpt-oss-120b');
     }catch(e){
       // fallback model
       if(String(e).toLowerCase().includes('model') || String(e).includes('decommission')){
-        html = await callGroq(prompt, 'llama3-70b-8192');
+        html = await callGroq(prompt, 'openai/gpt-oss-20b');
       }else{ throw e; }
     }
     const clean = extractHTML(html);
